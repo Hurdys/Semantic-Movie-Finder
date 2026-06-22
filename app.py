@@ -11,16 +11,6 @@ from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 
 
-# Automatické stažení potřebných NLTK balíčků při prvním spuštění
-try:
-    nltk.data.find('tokenizers/punkt')
-    nltk.data.find('taggers/averaged_perceptron_tagger_eng')
-except LookupError:
-    nltk.download('punkt')
-    # Pro jistotu stáhneme obě verze, starou i novou, ať je klid
-    nltk.download('averaged_perceptron_tagger')
-    nltk.download('averaged_perceptron_tagger_eng')
-
 # Nastavení stránky
 st.set_page_config(page_title="Filmový archiv", layout="wide")
 
