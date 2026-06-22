@@ -9,6 +9,22 @@ from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
+import os
+
+
+nltk_data_dir = os.path.join(os.getcwd(), "nltk_data_custom")
+os.makedirs(nltk_data_dir, exist_ok=True)
+
+if nltk_data_dir not in nltk.data.path:
+    nltk.data.path.append(nltk_data_dir)
+
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+    nltk.data.find('taggers/averaged_perceptron_tagger_eng')
+except LookupError:
+    nltk.download('punkt_tab', download_dir=nltk_data_dir)
+    nltk.download('averaged_perceptron_tagger_eng', download_dir=nltk_data_dir)
+# ----------------------------------------------
 
 
 # Nastavení stránky
